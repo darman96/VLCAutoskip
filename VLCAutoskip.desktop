@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VLCAutoskip
+Comment=VLCAutoskip
+Exec=vlc-autoskip
+Icon=vlc
+Terminal=false
+Categories=AudioVideo;Player;Audio;Video;

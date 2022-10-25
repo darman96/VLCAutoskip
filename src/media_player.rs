@@ -3,7 +3,7 @@ use std::fmt::Debug;
 use std::sync::{Arc, Mutex};
 use futures::executor::block_on;
 use tokio::sync::mpsc::{Receiver, Sender};
-use vlc::{Instance};
+use vlc::{Instance, MediaPlayerVideoEx};
 use crate::Settings;
 
 pub struct MediaTrack {
@@ -67,6 +67,7 @@ impl MediaPlayer {
         let instance = Instance::new().unwrap();
         let player = vlc::MediaPlayer::new(&instance).unwrap();
         instance.add_intf("qt").unwrap();
+        player.set_fullscreen(true);
         
         Self::subscribe_to_vlc_events(media_tx, &mut player.event_manager());
         Self {
