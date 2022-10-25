@@ -1,0 +1,5 @@
+{
+  "threshold": 0.1,
+  "event_delay": 200,
+  "media_dir": "/home/erik/Documents"
+}
