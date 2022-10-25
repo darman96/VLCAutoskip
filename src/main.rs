@@ -1,3 +1,4 @@
+use std::path::Path;
 use tokio::sync::mpsc::channel;
 use serde::{Serialize, Deserialize};
 
@@ -19,9 +20,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // print current directory
     println!("Current directory: {}", std::env::current_dir()?.display());
     
-    let settings_file = "settings.json";
+    let home_dir = std::env::var("HOME").unwrap();
+    let settings_file = ".config/vlc-autoskip/settings.json";
     let settings = serde_json::from_str::<Settings>(
-        std::fs::read_to_string(settings_file)
+        std::fs::read_to_string(Path::new(&home_dir).join(settings_file))
             .unwrap_or_else(|_| panic!("Failed to read settings file: {}", settings_file))
             .as_str()
     ).expect("Failed to parse settings file");

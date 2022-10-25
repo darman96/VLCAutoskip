@@ -3,7 +3,7 @@ use std::fmt::Debug;
 use std::sync::{Arc, Mutex};
 use futures::executor::block_on;
 use tokio::sync::mpsc::{Receiver, Sender};
-use vlc::{Instance, MediaPlayerAudioEx};
+use vlc::{Instance};
 use crate::Settings;
 
 pub struct MediaTrack {
